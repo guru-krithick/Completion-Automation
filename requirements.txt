@@ -2,4 +2,3 @@ streamlit
 pandas
 python-docx
 docx2pdf
-smtplib  # For sending emails, though note this comes with Python's standard library
