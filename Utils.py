@@ -20,4 +20,4 @@ def evaluateAngular(index, text):
             if text.find(template) > -1:
                 text = text.replace(template, str(row[constant_column]))
 
-    return text
+    return text 

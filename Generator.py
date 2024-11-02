@@ -35,11 +35,6 @@ def generate_certificate(row, template_file, output_dir='.'):
     output_docx = os.path.join(output_dir, f'{row_name}_Certificate.docx')
     output_pdf = os.path.join(output_dir, f'DNYX-Completion-{row_name}.pdf')
 
-    # Log paths for debugging
-    print(f"Saving DOCX to: {output_docx}")
-    print(f"Saving PDF to: {output_pdf}")
-    print(f"Template file being used: {template_file}")
-
     # Ensure the directory exists
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -47,25 +42,19 @@ def generate_certificate(row, template_file, output_dir='.'):
     # Replace placeholders and generate DOCX
     try:
         replace_text_in_docx(template_file, output_docx, replacements)
-        print(f"Successfully created DOCX file: {output_docx}")
     except Exception as e:
-        print(f"Error creating DOCX file: {e}")
         raise e
 
     # Convert DOCX to PDF
     try:
         convert_docx_to_pdf(output_docx, output_pdf)
-        print(f"Successfully converted to PDF: {output_pdf}")
     except Exception as e:
-        print(f"Error converting to PDF: {e}")
         raise e
 
     # Clean up DOCX file after conversion
     try:
         os.remove(output_docx)
-        print(f"Cleaned up DOCX file: {output_docx}")
     except Exception as e:
-        print(f"Error removing DOCX file: {e}")
         raise e
 
-    return output_pdf  # Return the correct PDF path
+    return output_pdf  # Return the correct PDF path 
